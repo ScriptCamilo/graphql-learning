@@ -1,1 +1,1 @@
-# graphql-easy
+# Learning Graphql
