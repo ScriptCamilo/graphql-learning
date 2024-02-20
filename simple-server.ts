@@ -15,7 +15,7 @@ const typeDefs = gql`
   type Mutation {
     createUser(name: String!): User!
   }
-`
+`;
 
 interface User {
   id: string;
@@ -30,24 +30,24 @@ const server = new ApolloServer({
     Query: {
       users: () => {
         return users;
-      }
+      },
     },
 
     Mutation: {
       createUser: (_, args) => {
         const user = {
           id: randomUUID(),
-          name: args.name
+          name: args.name,
         };
 
         users.push(user);
 
         return user;
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 server.listen().then(({ url }) => {
   console.log(`🚀 HTTP server running on ${url}`);
-})
+});
